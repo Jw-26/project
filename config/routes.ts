@@ -52,10 +52,30 @@ export default [
     component: './TableList',
   },
   {
-    name: 'dashboard',
-    icon: 'table',
-    path: '/dashboard',
-    component: './TableList',
+    name: 'dataShow',
+    icon: 'barChart',
+    path: '/dataShow',
+    routes: [
+      {
+        path: '/dataShow/multidata',
+        name: 'multidata',
+        component: './DataShow/Multidata',
+      },
+    ],
+    
+  },
+  {
+    name: 'customer',
+    icon: 'contacts',
+    path: '/customer',
+    routes: [
+      {
+        path: '/customer/information',
+        name: 'information',
+        component: './Customer/Information',
+      },
+    ],
+    
   },
   {
     path: '/',

@@ -49,4 +49,9 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+  'menu.dataShow': '数据展示',
+  'menu.dataShow.multidata': '多维度数据展示',
+  'menu.customer': '企业客户',
+  'menu.customer.information': '客户信息',
+  
 };

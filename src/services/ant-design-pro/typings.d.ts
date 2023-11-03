@@ -98,4 +98,17 @@ declare namespace API {
     description?: string;
     type?: NoticeIconItemType;
   };
+  type CustInfo = {
+    data: CustInfoItem[];
+  };
+  type CustInfoItem = {
+    key: number;
+    cust_name: string;
+    desc: string;
+    speed: string;
+    route: string;
+    status: number;
+    startDate: string;
+    endDate: string;
+  };
 }

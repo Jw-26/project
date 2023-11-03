@@ -83,3 +83,18 @@ export async function removeRule(options?: { [key: string]: any }) {
     ...(options || {}),
   });
 }
+
+/** 获取客户信息 GET /api/customer/information */
+export async function cust_info() {
+  return request<API.CustInfo>('/api/customer/information', {
+    method: 'GET',
+  });
+}
+// export async function cust_info(options?: { [key: string]: any }) {
+//   return request<{
+//     data: API.CustInfo;
+//   }>('/api/customer/information', {
+//     method: 'GET',
+//     ...(options || {}),
+//   });
+// }
