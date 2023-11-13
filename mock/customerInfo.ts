@@ -6,9 +6,9 @@ const getCustInfo = (req: Request, res: Response) => {
       {
         key: 99,
         cust_name: '深圳大可龙贸易有限公司',
-        desc: '这是一段描述',
+        desc: '120',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -16,9 +16,9 @@ const getCustInfo = (req: Request, res: Response) => {
       {
         key: 98,
         cust_name: '深圳大可龙贸易有限公司',
-        desc: '这是一段描述',
+        desc: '120',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -28,7 +28,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -38,7 +38,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '0',//0:禁用；1：启用
+        status: '0', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -48,7 +48,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -58,7 +58,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -68,7 +68,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -78,7 +78,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '0',//0:禁用；1：启用
+        status: '0', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -88,7 +88,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '0',//0:禁用；1：启用
+        status: '0', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -98,7 +98,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -108,7 +108,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -118,7 +118,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '0',//0:禁用；1：启用
+        status: '0', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -128,7 +128,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -138,7 +138,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -148,7 +148,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '0',//0:禁用；1：启用
+        status: '0', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -158,7 +158,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '0',//0:禁用；1：启用
+        status: '0', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -168,7 +168,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -178,7 +178,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -188,7 +188,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '0',//0:禁用；1：启用
+        status: '0', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',
@@ -198,7 +198,7 @@ const getCustInfo = (req: Request, res: Response) => {
         cust_name: '深圳大可龙贸易有限公司',
         desc: '这是一段描述',
         speed: '50M',
-        status: '1',//0:禁用；1：启用
+        status: '1', //0:禁用；1：启用
         startDate: '2023-10-22',
         endDate: '2024-10-21',
         route: '美国/日本/英国',

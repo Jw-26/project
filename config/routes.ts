@@ -62,7 +62,6 @@ export default [
         component: './DataShow/Multidata',
       },
     ],
-    
   },
   {
     name: 'customer',
@@ -74,8 +73,12 @@ export default [
         name: 'information',
         component: './Customer/Information',
       },
+      {
+        path: '/customer/information/moreInfo',
+        name: 'information',
+        component: './Customer/Information/MoreInfo',
+      },
     ],
-    
   },
   {
     path: '/',

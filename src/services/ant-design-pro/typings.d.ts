@@ -107,7 +107,7 @@ declare namespace API {
     desc: string;
     speed: string;
     route: string;
-    status: number;
+    status: string;
     startDate: string;
     endDate: string;
   };
