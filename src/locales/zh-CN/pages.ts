@@ -2,7 +2,7 @@
  * @Author: Tang jun hao 980792492@qq.com
  * @Date: 2023-11-06 23:13:40
  * @LastEditors: Tang jun hao 980792492@qq.com
- * @LastEditTime: 2023-11-14 23:15:52
+ * @LastEditTime: 2023-11-17 22:20:59
  * @FilePath: /project/src/locales/zh-CN/pages.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -65,6 +65,7 @@ export default {
   'pages.searchTable.exception': '请输入异常原因！',
   'pages.searchTable.titleOption': '操作',
   'pages.searchTable.config': '配置',
+  'pages.searchTable.edit': '编辑',
   'pages.searchTable.subscribeAlert': '订阅警报',
   'pages.searchTable.title': '节点管理',
   'pages.searchTable.new': '新建',

@@ -6,10 +6,10 @@ import {
   ModalForm,
   PageContainer,
   ProDescriptions,
-  ProFormText,
   ProFormDatePicker,
+  ProFormSelect,
+  ProFormText,
   ProTable,
-  ProFormSelect
 } from '@ant-design/pro-components';
 import { FormattedMessage, useIntl } from '@umijs/max';
 import { Button, Drawer, Input, message } from 'antd';
@@ -17,39 +17,24 @@ import React, { useRef, useState } from 'react';
 import type { FormValueType } from './components/UpdateForm';
 import UpdateForm from './components/UpdateForm';
 
-
-const statusData =  {
+const statusData = {
   0: {
-    text: (
-      <FormattedMessage
-        id="pages.searchTable.nameStatus.default"
-        defaultMessage="Shut down"
-      />
-    ),
+    text: <FormattedMessage id="pages.searchTable.nameStatus.default" defaultMessage="Shut down" />,
     status: 'Default',
   },
   1: {
-    text: (
-      <FormattedMessage id="pages.searchTable.nameStatus.running" defaultMessage="Running" />
-    ),
+    text: <FormattedMessage id="pages.searchTable.nameStatus.running" defaultMessage="Running" />,
     status: 'Processing',
   },
   2: {
-    text: (
-      <FormattedMessage id="pages.searchTable.nameStatus.online" defaultMessage="Online" />
-    ),
+    text: <FormattedMessage id="pages.searchTable.nameStatus.online" defaultMessage="Online" />,
     status: 'Success',
   },
   3: {
-    text: (
-      <FormattedMessage
-        id="pages.searchTable.nameStatus.abnormal"
-        defaultMessage="Abnormal"
-      />
-    ),
+    text: <FormattedMessage id="pages.searchTable.nameStatus.abnormal" defaultMessage="Abnormal" />,
     status: 'Error',
   },
-}
+};
 
 /**
  * @en-US Add node
@@ -136,6 +121,8 @@ const TableList: React.FC = () => {
   const [currentRow, setCurrentRow] = useState<API.RuleListItem>();
   const [selectedRowsState, setSelectedRows] = useState<API.RuleListItem[]>([]);
 
+  const [record, setRecord] = useState({});
+
   /**
    * @en-US International configuration
    * @zh-CN 国际化配置
@@ -188,17 +175,15 @@ const TableList: React.FC = () => {
     },
     {
       title: <FormattedMessage id="pages.searchTable.owner" defaultMessage="Status" />,
-      dataIndex: 'status',
+      dataIndex: 'owner',
       // hideInForm: true,
       // valueType: 'input'
-
-  
     },
     {
       title: <FormattedMessage id="pages.searchTable.titleStatus" defaultMessage="Status" />,
       dataIndex: 'status',
       // hideInForm: true,
-      valueEnum:statusData
+      valueEnum: statusData,
     },
     {
       title: (
@@ -234,6 +219,15 @@ const TableList: React.FC = () => {
       dataIndex: 'option',
       valueType: 'option',
       render: (_, record) => [
+        <a
+          key="config"
+          onClick={() => {
+            handleModalOpen(true);
+            setRecord(record);
+          }}
+        >
+          <FormattedMessage id="pages.searchTable.edit" defaultMessage="Configuration" />
+        </a>,
         <a
           key="config"
           onClick={() => {
@@ -328,7 +322,17 @@ const TableList: React.FC = () => {
           id: 'pages.searchTable.createForm.newNode',
           defaultMessage: 'New rule',
         })}
-        width="400px"
+        initialValues={{
+          name: record?.name,
+          desc: record?.desc,
+          callNo: record?.callNo,
+          owner: record?.owner,
+          status: record?.status,
+        }}
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 18 }}
+        layout="horizontal"
+        width={'600px'}
         open={createModalOpen}
         onOpenChange={handleModalOpen}
         onFinish={async (value) => {
@@ -355,24 +359,16 @@ const TableList: React.FC = () => {
           ]}
           width="md"
           name="name"
-          label= {intl.formatMessage({
+          label={intl.formatMessage({
             id: 'pages.searchTable.updateForm.ruleName.nameLabel',
             defaultMessage: 'New rule',
           })}
         />
-        <ProFormText width="md" name="desc"  label="IP4/IPv6"/>
-        <ProFormText width="md" name="desc"  label="节点配置"/>
-        <ProFormText width="md" name="desc" label="隶属客户" />
-        <ProFormSelect
-        label="状态"
-        name="level"
-        valueEnum={statusData}
-      />
-        <ProFormDatePicker
-        colProps={{ xl: 8, md: 12 }}
-        label="开通/结束时间"
-        name="date"
-      />
+        <ProFormText width="md" name="desc" label="IP4/IPv6" />
+        <ProFormText width="md" name="callNo" label="节点配置" />
+        <ProFormText width="md" name="owner" label="隶属客户" />
+        <ProFormSelect label="状态" name="status" valueEnum={statusData} width="md" />
+        <ProFormDatePicker label="开通/结束时间" name="updatedAt" width="md" />
       </ModalForm>
       <UpdateForm
         onSubmit={async (value) => {
@@ -394,7 +390,7 @@ const TableList: React.FC = () => {
         updateModalOpen={updateModalOpen}
         values={currentRow || {}}
       />
-
+      {/* 详情 */}
       <Drawer
         width={600}
         open={showDetail}
