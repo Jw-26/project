@@ -1,5 +1,14 @@
+/*
+ * @Author: Tang jun hao 980792492@qq.com
+ * @Date: 2023-11-06 23:13:40
+ * @LastEditors: Tang jun hao 980792492@qq.com
+ * @LastEditTime: 2023-11-14 22:44:01
+ * @FilePath: /project/src/locales/zh-CN/menu.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 export default {
-  'menu.welcome': '欢迎',
+  'menu.welcome':'欢迎',
+  'menu.dashBoard': '概览',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',
@@ -22,7 +31,7 @@ export default {
   'menu.form.step-form.result': '分步表单（完成）',
   'menu.form.advanced-form': '高级表单',
   'menu.list': '列表页',
-  'menu.list.table-list': '查询表格',
+  'menu.list.table-list': '节点管理',
   'menu.list.basic-list': '标准列表',
   'menu.list.card-list': '卡片列表',
   'menu.list.search-list': '搜索列表',

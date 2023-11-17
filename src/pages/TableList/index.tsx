@@ -7,14 +7,49 @@ import {
   PageContainer,
   ProDescriptions,
   ProFormText,
-  ProFormTextArea,
+  ProFormDatePicker,
   ProTable,
+  ProFormSelect
 } from '@ant-design/pro-components';
 import { FormattedMessage, useIntl } from '@umijs/max';
 import { Button, Drawer, Input, message } from 'antd';
 import React, { useRef, useState } from 'react';
 import type { FormValueType } from './components/UpdateForm';
 import UpdateForm from './components/UpdateForm';
+
+
+const statusData =  {
+  0: {
+    text: (
+      <FormattedMessage
+        id="pages.searchTable.nameStatus.default"
+        defaultMessage="Shut down"
+      />
+    ),
+    status: 'Default',
+  },
+  1: {
+    text: (
+      <FormattedMessage id="pages.searchTable.nameStatus.running" defaultMessage="Running" />
+    ),
+    status: 'Processing',
+  },
+  2: {
+    text: (
+      <FormattedMessage id="pages.searchTable.nameStatus.online" defaultMessage="Online" />
+    ),
+    status: 'Success',
+  },
+  3: {
+    text: (
+      <FormattedMessage
+        id="pages.searchTable.nameStatus.abnormal"
+        defaultMessage="Abnormal"
+      />
+    ),
+    status: 'Error',
+  },
+}
 
 /**
  * @en-US Add node
@@ -131,20 +166,20 @@ const TableList: React.FC = () => {
       },
     },
     {
-      title: <FormattedMessage id="pages.searchTable.titleDesc" defaultMessage="Description" />,
+      title: <FormattedMessage id="pages.searchTable.titleIpv4Ipv6" defaultMessage="Description" />,
       dataIndex: 'desc',
       valueType: 'textarea',
     },
     {
       title: (
         <FormattedMessage
-          id="pages.searchTable.titleCallNo"
+          id="pages.searchTable.nodeConfig"
           defaultMessage="Number of service calls"
         />
       ),
       dataIndex: 'callNo',
       sorter: true,
-      hideInForm: true,
+      // hideInForm: true,
       renderText: (val: string) =>
         `${val}${intl.formatMessage({
           id: 'pages.searchTable.tenThousand',
@@ -152,41 +187,18 @@ const TableList: React.FC = () => {
         })}`,
     },
     {
+      title: <FormattedMessage id="pages.searchTable.owner" defaultMessage="Status" />,
+      dataIndex: 'status',
+      // hideInForm: true,
+      // valueType: 'input'
+
+  
+    },
+    {
       title: <FormattedMessage id="pages.searchTable.titleStatus" defaultMessage="Status" />,
       dataIndex: 'status',
-      hideInForm: true,
-      valueEnum: {
-        0: {
-          text: (
-            <FormattedMessage
-              id="pages.searchTable.nameStatus.default"
-              defaultMessage="Shut down"
-            />
-          ),
-          status: 'Default',
-        },
-        1: {
-          text: (
-            <FormattedMessage id="pages.searchTable.nameStatus.running" defaultMessage="Running" />
-          ),
-          status: 'Processing',
-        },
-        2: {
-          text: (
-            <FormattedMessage id="pages.searchTable.nameStatus.online" defaultMessage="Online" />
-          ),
-          status: 'Success',
-        },
-        3: {
-          text: (
-            <FormattedMessage
-              id="pages.searchTable.nameStatus.abnormal"
-              defaultMessage="Abnormal"
-            />
-          ),
-          status: 'Error',
-        },
-      },
+      // hideInForm: true,
+      valueEnum:statusData
     },
     {
       title: (
@@ -313,7 +325,7 @@ const TableList: React.FC = () => {
       )}
       <ModalForm
         title={intl.formatMessage({
-          id: 'pages.searchTable.createForm.newRule',
+          id: 'pages.searchTable.createForm.newNode',
           defaultMessage: 'New rule',
         })}
         width="400px"
@@ -343,8 +355,24 @@ const TableList: React.FC = () => {
           ]}
           width="md"
           name="name"
+          label= {intl.formatMessage({
+            id: 'pages.searchTable.updateForm.ruleName.nameLabel',
+            defaultMessage: 'New rule',
+          })}
         />
-        <ProFormTextArea width="md" name="desc" />
+        <ProFormText width="md" name="desc"  label="IP4/IPv6"/>
+        <ProFormText width="md" name="desc"  label="节点配置"/>
+        <ProFormText width="md" name="desc" label="隶属客户" />
+        <ProFormSelect
+        label="状态"
+        name="level"
+        valueEnum={statusData}
+      />
+        <ProFormDatePicker
+        colProps={{ xl: 8, md: 12 }}
+        label="开通/结束时间"
+        name="date"
+      />
       </ModalForm>
       <UpdateForm
         onSubmit={async (value) => {

@@ -1,3 +1,11 @@
+/*
+ * @Author: Tang jun hao 980792492@qq.com
+ * @Date: 2023-11-06 23:13:40
+ * @LastEditors: Tang jun hao 980792492@qq.com
+ * @LastEditTime: 2023-11-15 23:47:13
+ * @FilePath: /project/config/defaultSettings.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { ProLayoutProps } from '@ant-design/pro-components';
 
 /**
@@ -15,9 +23,9 @@ const Settings: ProLayoutProps & {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
+  title: 'PiP 速链全国',
   pwa: true,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  // logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
   token: {
     // 参见ts声明，demo 见文档，通过token 修改样式
