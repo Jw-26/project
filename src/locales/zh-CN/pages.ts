@@ -1,3 +1,11 @@
+/*
+ * @Author: Tang jun hao 980792492@qq.com
+ * @Date: 2023-11-06 23:13:40
+ * @LastEditors: Tang jun hao 980792492@qq.com
+ * @LastEditTime: 2023-11-17 22:20:59
+ * @FilePath: /project/src/locales/zh-CN/pages.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 export default {
   'pages.layouts.userLayout.title': 'Ant Design 是西湖区最具影响力的 Web 设计规范',
   'pages.login.accountLogin.tab': '账户密码登录',
@@ -29,8 +37,8 @@ export default {
   'pages.searchTable.createForm.newRule': '新建规则',
   'pages.searchTable.updateForm.ruleConfig': '规则配置',
   'pages.searchTable.updateForm.basicConfig': '基本信息',
-  'pages.searchTable.updateForm.ruleName.nameLabel': '规则名称',
-  'pages.searchTable.updateForm.ruleName.nameRules': '请输入规则名称！',
+  'pages.searchTable.updateForm.ruleName.nameLabel': '国家/城市',
+  'pages.searchTable.updateForm.ruleName.nameRules': '请输入国家/城市',
   'pages.searchTable.updateForm.ruleDesc.descLabel': '规则描述',
   'pages.searchTable.updateForm.ruleDesc.descPlaceholder': '请输入至少五个字符',
   'pages.searchTable.updateForm.ruleDesc.descRules': '请输入至少五个字符的规则描述！',
@@ -41,20 +49,25 @@ export default {
   'pages.searchTable.updateForm.schedulingPeriod.title': '设定调度周期',
   'pages.searchTable.updateForm.schedulingPeriod.timeLabel': '开始时间',
   'pages.searchTable.updateForm.schedulingPeriod.timeRules': '请选择开始时间！',
-  'pages.searchTable.titleDesc': '描述',
+  'pages.searchTable.titleDesc': 'IP4/IP6',
+  'pages.searchTable.titleIpv4Ipv6': 'IP4/IP6',
+  'pages.searchTable.nodeConfig': '节点配置',
+  'pages.searchTable.owner': '隶属客户',
   'pages.searchTable.ruleName': '规则名称为必填项',
   'pages.searchTable.titleCallNo': '服务调用次数',
   'pages.searchTable.titleStatus': '状态',
+  'pages.searchTable.createForm.newNode': '新建节点',
   'pages.searchTable.nameStatus.default': '关闭',
   'pages.searchTable.nameStatus.running': '运行中',
   'pages.searchTable.nameStatus.online': '已上线',
   'pages.searchTable.nameStatus.abnormal': '异常',
-  'pages.searchTable.titleUpdatedAt': '上次调度时间',
+  'pages.searchTable.titleUpdatedAt': '开通/结束日期',
   'pages.searchTable.exception': '请输入异常原因！',
   'pages.searchTable.titleOption': '操作',
   'pages.searchTable.config': '配置',
+  'pages.searchTable.edit': '编辑',
   'pages.searchTable.subscribeAlert': '订阅警报',
-  'pages.searchTable.title': '查询表格',
+  'pages.searchTable.title': '节点管理',
   'pages.searchTable.new': '新建',
   'pages.searchTable.chosen': '已选择',
   'pages.searchTable.item': '项',
