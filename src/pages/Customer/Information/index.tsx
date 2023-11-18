@@ -4,6 +4,7 @@ import { cust_info } from '@/services/ant-design-pro/api';
 import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
 import { Button, ConfigProvider, Segmented, Tag, theme } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'umi';
 import InfoCardAdd from '../components/InfoCardAdd';
 
 /**
@@ -82,9 +83,11 @@ const InfoCard: React.FC<{
       </div>
       <div>路线：{route}</div>
       <div style={{ float: 'right' }}>
-        <Button type="primary" style={{ marginRight: '10px' }}>
-          更多
-        </Button>
+        <Link to="/customer/information/moreInfo">
+          <Button type="primary" style={{ marginRight: '10px' }}>
+            更多
+          </Button>
+        </Link>
         {status === '1' && <Button>禁用</Button>}
       </div>
     </div>

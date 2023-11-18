@@ -1,6 +1,6 @@
 import { Button, Input } from 'antd';
 import React from 'react';
-import styles from './TextAreaButton.less';
+import styles from './TextAreaButton.module.less';
 
 const { TextArea } = Input;
 

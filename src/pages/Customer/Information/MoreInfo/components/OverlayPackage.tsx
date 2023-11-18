@@ -58,7 +58,7 @@ const OverlayPackage: React.FC<OverlayPackageProps> = (props) => {
   return (
     <div style={{ backgroundColor: '#fff', margin: '15px', padding: '10px' }}>
       <span style={{ fontWeight: 'bold', fontSize: '18px' }}>叠加套餐</span>
-      <Table columns={columns} dataSource={props.list} pagination={false}></Table>
+      <Table size="small" columns={columns} dataSource={props.list} pagination={false}></Table>
     </div>
   );
 };
