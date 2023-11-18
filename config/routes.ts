@@ -37,29 +37,6 @@ export default [
     component: './DashBoard',
   },
   {
-    path: '/admin',
-    name: 'admin',
-    icon: 'crown',
-    access: 'canAdmin',
-    routes: [
-      {
-        path: '/admin',
-        redirect: '/admin/sub-page',
-      },
-      {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        component: './Admin',
-      },
-    ],
-  },
-  {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
-  },
-  {
     name: 'dataShow',
     icon: 'barChart',
     path: '/dataShow',
@@ -70,7 +47,6 @@ export default [
         component: './DataShow/Multidata',
       },
     ],
-    
   },
   {
     name: 'customer',
@@ -82,8 +58,12 @@ export default [
         name: 'information',
         component: './Customer/Information',
       },
+      {
+        path: '/customer/information/moreInfo',
+        // name: 'information',
+        component: './Customer/Information/MoreInfo',
+      },
     ],
-    
   },
   {
     path: '/',

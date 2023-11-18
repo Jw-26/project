@@ -1,8 +1,11 @@
-import { PageContainer, ProCard } from '@ant-design/pro-components';
+import { PageContainer } from '@ant-design/pro-components';
 // import { useModel } from '@umijs/max';
 import { cust_info } from '@/services/ant-design-pro/api';
-import { theme } from 'antd';
+import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
+import { Button, ConfigProvider, Segmented, Tag, theme } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'umi';
+import InfoCardAdd from '../components/InfoCardAdd';
 
 /**
  * 每个单独的卡片，为了复用样式抽成了组件
@@ -11,9 +14,13 @@ import React, { useEffect, useState } from 'react';
  */
 const InfoCard: React.FC<{
   title: string;
-  desc: string;
-  href: string;
-}> = ({ title, href, desc }) => {
+  desc: string; //用户
+  speed: string;
+  status: string;
+  startDate: string;
+  endDate: string;
+  route: string;
+}> = ({ title, speed, desc, status, startDate, endDate, route }) => {
   const { useToken } = theme;
 
   const { token } = useToken();
@@ -21,68 +28,109 @@ const InfoCard: React.FC<{
   return (
     <div
       style={{
-        backgroundColor: token.colorBgContainer,
-        boxShadow: token.boxShadow,
+        backgroundColor: status === '1' ? token.colorBgContainer : '#EFEFEF',
+        boxShadow: status === '1' ? token.boxShadow : '#EFEFEF',
         borderRadius: '8px',
-        fontSize: '14px',
         color: token.colorTextSecondary,
-        lineHeight: '50px',
+        lineHeight: '35px',
         padding: '16px 19px',
         width: '350px',
         // flex: 1,
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          gap: '4px',
-          alignItems: 'center',
-        }}
-      >
-        {/* <div
-          style={{
-            width: 48,
-            height: 48,
-            lineHeight: '22px',
-            backgroundSize: '100%',
-            textAlign: 'center',
-            padding: '8px 16px 16px 12px',
-            color: '#FFF',
-            fontWeight: 'bold',
-            backgroundImage:
-              "url('https://gw.alipayobjects.com/zos/bmw-prod/daaf8d50-8e6d-4251-905d-676a24ddfa12.svg')",
-          }}
-        >
-          {index}
-        </div> */}
+      <div>
         <div
           style={{
             fontSize: '16px',
             color: token.colorText,
-            paddingBottom: 8,
+            // paddingBottom: 2,
+            width: '100%',
           }}
         >
-          {title}
+          <span style={{ fontWeight: 'bold' }}>{title}</span>
+          <div
+            style={{
+              float: 'right',
+            }}
+          >
+            {status === '1' ? (
+              <Tag bordered={false} color="success" icon={<CheckCircleFilled />}>
+                已开启
+              </Tag>
+            ) : (
+              <Tag bordered={false} color="default" icon={<CloseCircleFilled />}>
+                禁用中
+              </Tag>
+            )}
+          </div>
         </div>
+      </div>
+      <div>
+        {startDate}/{endDate}
       </div>
       <div
         style={{
           fontSize: '14px',
+          display: 'flex',
           color: token.colorTextSecondary,
           textAlign: 'justify',
-          lineHeight: '22px',
-          marginBottom: 8,
+          lineHeight: '16px',
+          marginTop: 10,
         }}
       >
-        {desc}
+        <div style={{ flex: '70px' }}>用户: {desc}</div>
+        <div style={{ flex: '20px' }}>速度: {speed}</div>
       </div>
-      <a href={href} target="_blank" rel="noreferrer">
-        了解更多 {'>'}
-      </a>
+      <div>路线：{route}</div>
+      <div style={{ float: 'right' }}>
+        <Link to="/customer/information/moreInfo">
+          <Button type="primary" style={{ marginRight: '10px' }}>
+            更多
+          </Button>
+        </Link>
+        {status === '1' && <Button>禁用</Button>}
+      </div>
     </div>
   );
 };
+const TabTop: React.FC<{ list: Array<string> }> = ({ list }) => {
+  const { useToken } = theme;
 
+  const { token } = useToken();
+  return (
+    <ConfigProvider
+      theme={{
+        components: {
+          Segmented: {
+            itemActiveBg: '#F2F3F8',
+            itemSelectedBg: '#F2F3F8',
+            itemSelectedColor: '#7385FD',
+            itemHoverColor: '#7385FD',
+            borderRadiusSM: 16,
+          },
+        },
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: token.colorBgContainer,
+          display: 'flex',
+          height: '60px',
+          alignItems: 'center',
+          marginBottom: '20px',
+          paddingLeft: '20px',
+        }}
+      >
+        <Segmented
+          options={list}
+          style={{
+            backgroundColor: token.colorBgContainer,
+          }}
+        />
+      </div>
+    </ConfigProvider>
+  );
+};
 const Information: React.FC = () => {
   const [custInfo, setCustInfo] = useState<API.CustInfoItem[]>([]);
   useEffect(() => {
@@ -91,7 +139,7 @@ const Information: React.FC = () => {
       setCustInfo(result.data || []);
     };
     fetchData();
-  });
+  }, []);
 
   //   const { initialState } = useModel('@@initialState');
   return (
@@ -118,30 +166,29 @@ const Information: React.FC = () => {
             backgroundSize: '274px auto',
           }}
         >
-          <div>tab</div>
+          <TabTop list={['全部', '专线客户', '通用线路', '禁用中']}></TabTop>
           <div
             style={{
               display: 'flex',
               flexWrap: 'wrap',
-              gap: 24,
+              rowGap: 25,
+              columnGap: 45,
             }}
           >
-            <ProCard
-              layout="center"
-              direction="column"
-              style={{ maxWidth: 300, height: 200 }}
-            >
-              <div>123</div>
-              <div>456</div>
-            </ProCard>
+            <InfoCardAdd />
             {custInfo.map((item) => {
               return (
                 // <div >
                 <InfoCard
                   key={item.key}
-                  href="https://umijs.org/docs/introduce/introduce"
+                  //   href="https://umijs.org/docs/introduce/introduce"
                   title={item.cust_name}
-                  desc="umi 是一个可扩展的企业级前端应用框架,umi 以路由为基础的，同时支持配置式路由和约定式路由，保证路由的功能完备，并以此进行功能扩展。"
+                  status={item.status}
+                  speed={item.speed}
+                  startDate={item.startDate}
+                  endDate={item.endDate}
+                  route={item.route}
+                  desc={item.desc}
                 />
                 // </div>
               );
