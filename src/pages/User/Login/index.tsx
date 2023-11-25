@@ -117,8 +117,17 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.LoginParams) => {
     try {
       // 登录
-      const msg = await login({ ...values, type });
-      if (msg.status === 'ok') {
+      const msg = await login({
+        //  ...values,
+        company_name: 'slowstart', // 公司名称
+        name: 'admin', // 子账户名称
+        pwd: '123456', // 密码
+        ip: '1.1.1.1', // 通常情况下，前端不用提供该字段，后端会自动采用可见的接入ip；特别的，前端也可以给出这个ip，来显式地告诉后端应该保存哪个ip作为登录ip
+        os: 'MacOS',
+        type,
+      });
+      // if (msg.status === 'ok') {
+      if (msg.msg === 'ok') {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
@@ -181,6 +190,8 @@ const Login: React.FC = () => {
                 // subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
                 initialValues={{
                   autoLogin: true,
+                  username: 'admin',
+                  password: 'ant.design',
                 }}
                 // actions={[
                 //   <FormattedMessage
