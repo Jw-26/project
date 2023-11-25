@@ -11,7 +11,12 @@ import Report from './Report';
 const DashBoard: React.FC = () => {
   // const { initialState } = useModel('@@initialState');
   return (
-    <PageContainer>
+    <PageContainer
+      header={{
+        title: '欢迎回来',
+        breadcrumb: {},
+      }}
+    >
       <ProCard>
         <div className="dash-board-wrap">
           <div className="dash-board-wrap-top">

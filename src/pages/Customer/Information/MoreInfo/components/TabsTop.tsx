@@ -1,7 +1,7 @@
+import CustomerOrder from '@/pages/Customer/Information/MoreInfo/CustomerOrder/CustomerOrder';
 import type { TabsProps } from 'antd';
 import { Tabs } from 'antd';
 import React from 'react';
-import CustomerOrder from '../CustomerOrder/CustomerOrder';
 
 const onChange = (key: string) => {
   console.log(key);

@@ -1,8 +1,8 @@
+import OverlayPackage from '@/pages/Customer/Information/MoreInfo/components/OverlayPackage';
 import { EditOutlined } from '@ant-design/icons';
 import type { DescriptionsProps } from 'antd';
 import { Button, ConfigProvider, Descriptions, Tag } from 'antd';
 import React from 'react';
-import OverlayPackage from './OverlayPackage';
 
 interface PackageDetailsProps {
   basic: string;

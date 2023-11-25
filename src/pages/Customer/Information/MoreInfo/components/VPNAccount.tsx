@@ -1,5 +1,5 @@
+import PipAvatar from '@/pages/Customer/Information/MoreInfo/components/VPNAvatar/PipAvatar';
 import React from 'react';
-import PipAvatar from './VPNAvatar/PipAvatar';
 
 const VPNAccount: React.FC = () => {
   const info = [

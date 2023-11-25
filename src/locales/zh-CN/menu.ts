@@ -7,7 +7,7 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 export default {
-  'menu.welcome':'欢迎',
+  'menu.welcome': '欢迎',
   'menu.dashBoard': '概览',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
@@ -62,5 +62,6 @@ export default {
   'menu.dataShow.multidata': '多维度数据展示',
   'menu.customer': '企业客户',
   'menu.customer.information': '客户信息',
-  
+  'menu.node': '节点管理',
+  'menu.node.list': '节点管理',
 };

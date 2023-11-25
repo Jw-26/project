@@ -44,7 +44,7 @@ export default [
       {
         path: '/dataShow/multidata',
         name: 'multidata',
-        component: './DataShow/Multidata',
+        component: './DashBoard',
       },
     ],
   },
@@ -62,6 +62,18 @@ export default [
         path: '/customer/information/moreInfo',
         // name: 'information',
         component: './Customer/Information/MoreInfo',
+      },
+    ],
+  },
+  {
+    name: 'node',
+    icon: 'nodeIndex',
+    path: '/node',
+    routes: [
+      {
+        path: '/node/list',
+        name: 'list',
+        component: './TableList',
       },
     ],
   },

@@ -1,11 +1,12 @@
-import { ProCard } from '@ant-design/pro-components';
+import TabsHeader from '@/pages/Customer/components/TabsHeader';
+import CustInformation from '@/pages/Customer/Information/MoreInfo/components/CustInformation';
+import TabsTop from '@/pages/Customer/Information/MoreInfo/components/TabsTop';
+import TimeLine from '@/pages/Customer/Information/MoreInfo/components/TimeLine';
+import TitleCard from '@/pages/Customer/Information/MoreInfo/components/TitleCard';
+import VPNAccount from '@/pages/Customer/Information/MoreInfo/components/VPNAccount';
+import WeChatBind from '@/pages/Customer/Information/MoreInfo/components/WeChatBind';
+import { PageContainer, ProCard } from '@ant-design/pro-components';
 import React from 'react';
-import CustInformation from './components/CustInformation';
-import TabsTop from './components/TabsTop';
-import TimeLine from './components/TimeLine';
-import TitleCard from './components/TitleCard';
-import VPNAccount from './components/VPNAccount';
-import WeChatBind from './components/WeChatBind';
 
 const info = {
   company: '深圳大可贸易有限公司',
@@ -28,7 +29,19 @@ const managementInfo = {
 
 const MoreInfo: React.FC = () => {
   return (
-    <div>
+    <PageContainer header={{ title: null, breadcrumb: {} }}>
+      <TabsHeader
+        list={[
+          '全部',
+          '终端态势',
+          '套餐查看',
+          '公司信息',
+          '账单和发票',
+          '安全态势',
+          'VPN态势',
+          '登录日志',
+        ]}
+      ></TabsHeader>
       <ProCard ghost gutter={[16, 0]}>
         <ProCard direction="column" ghost gutter={[0, 16]} colSpan={19}>
           <ProCard ghost>
@@ -56,7 +69,7 @@ const MoreInfo: React.FC = () => {
           <TabsTop></TabsTop>
         </ProCard>
       </ProCard>
-    </div>
+    </PageContainer>
   );
 };
 

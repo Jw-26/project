@@ -1,6 +1,6 @@
+import AllRecord from '@/pages/Customer/Information/MoreInfo/components/AllRecords/AllRecord';
+import TextAreaButton from '@/pages/Customer/Information/MoreInfo/components/TextAreaButton/TextAreaButton';
 import React from 'react';
-import AllRecord from '../components/AllRecords/AllRecord';
-import TextAreaButton from '../components/TextAreaButton/TextAreaButton';
 
 const CustomerOrder: React.FC = () => {
   const recode = [
