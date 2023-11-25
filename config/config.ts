@@ -6,6 +6,7 @@ import proxy from './proxy';
 import routes from './routes';
 
 const { REACT_APP_ENV = 'dev' } = process.env;
+console.warn('REACT_APP_ENV', REACT_APP_ENV)
 
 export default defineConfig({
   /**
@@ -163,5 +164,8 @@ export default defineConfig({
   //   react: 'React',
   //   'react-dom': 'ReactDOM',
   //   "@ant-design/charts": "charts"
-  //  }
+  //  },
+  define: {
+    REACT_APP_ENV: REACT_APP_ENV || false,
+  }
 });
