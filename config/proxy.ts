@@ -1,3 +1,11 @@
+/*
+ * @Author: tangjunhao 980792492@qq.com
+ * @Date: 2023-11-25 21:23:34
+ * @LastEditors: tangjunhao 980792492@qq.com
+ * @LastEditTime: 2023-11-25 21:24:59
+ * @FilePath: /project/config/proxy.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 /**
  * @name 代理的配置
  * @see 在生产环境 代理是无法生效的，所以这里没有生产环境的配置
@@ -11,16 +19,13 @@
  */
 export default {
   // 如果需要自定义本地开发服务器  请取消注释按需调整
-  // dev: {
-  //   // localhost:8000/api/** -> https://preview.pro.ant.design/api/**
-  //   '/api/': {
-  //     // 要代理的地址
-  //     target: 'https://preview.pro.ant.design',
-  //     // 配置了这个可以从 http 代理到 https
-  //     // 依赖 origin 的功能可能需要这个，比如 cookie
-  //     changeOrigin: true,
-  //   },
-  // },
+  dev: {
+   '/biz_api': {
+      target: 'https://slowstart.net:980', // 'https://preview.pro.ant.design',
+      changeOrigin: true,
+      pathRewrite: { '^/biz_api/': '/biz_api/' },
+    },
+  },
 
   /**
    * @name 详细的代理配置
