@@ -24,9 +24,10 @@ declare namespace API {
   };
 
   type LoginResult = {
+    err_code?: Number;
+    msg?: string;
+    token?: string;
     status?: string;
-    type?: string;
-    currentAuthority?: string;
   };
 
   type PageParams = {
@@ -62,10 +63,10 @@ declare namespace API {
   };
 
   type LoginParams = {
-    username?: string;
-    password?: string;
-    autoLogin?: boolean;
-    type?: string;
+    company_name: string;
+    name: string;
+    pwd: string;
+    os: string;
   };
 
   type ErrorResponse = {

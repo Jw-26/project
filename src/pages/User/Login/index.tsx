@@ -1,50 +1,42 @@
 import { login } from '@/services/ant-design-pro/api';
-import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import {
-  AlipayCircleOutlined,
+  // AlipayCircleOutlined,
   LockOutlined,
-  MobileOutlined,
-  TaobaoCircleOutlined,
+  // TaobaoCircleOutlined,
   UserOutlined,
-  WeiboCircleOutlined,
 } from '@ant-design/icons';
-import {
-  LoginForm,
-  ProFormCaptcha,
-  ProFormCheckbox,
-  ProFormText,
-} from '@ant-design/pro-components';
+import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
 import { FormattedMessage, Helmet, history, SelectLang, useIntl, useModel } from '@umijs/max';
-import { Alert, Col, ConfigProvider, message, Row, Tabs } from 'antd';
+import { Alert, Col, ConfigProvider, message, Row } from 'antd';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
 import Settings from '../../../../config/defaultSettings';
 import './index.less';
 
-const ActionIcons = () => {
-  const langClassName = useEmotionCss(({ token }) => {
-    return {
-      marginLeft: '8px',
-      color: 'rgba(0, 0, 0, 0.2)',
-      fontSize: '24px',
-      verticalAlign: 'middle',
-      cursor: 'pointer',
-      transition: 'color 0.3s',
-      '&:hover': {
-        color: token.colorPrimaryActive,
-      },
-    };
-  });
+// const ActionIcons = () => {
+//   const langClassName = useEmotionCss(({ token }) => {
+//     return {
+//       marginLeft: '8px',
+//       color: 'rgba(0, 0, 0, 0.2)',
+//       fontSize: '24px',
+//       verticalAlign: 'middle',
+//       cursor: 'pointer',
+//       transition: 'color 0.3s',
+//       '&:hover': {
+//         color: token.colorPrimaryActive,
+//       },
+//     };
+//   });
 
-  return (
-    <>
-      <AlipayCircleOutlined key="AlipayCircleOutlined" className={langClassName} />
-      <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={langClassName} />
-      <WeiboCircleOutlined key="WeiboCircleOutlined" className={langClassName} />
-    </>
-  );
-};
+//   return (
+//     <>
+//       <AlipayCircleOutlined key="AlipayCircleOutlined" className={langClassName} />
+//       <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={langClassName} />
+//       <WeiboCircleOutlined key="WeiboCircleOutlined" className={langClassName} />
+//     </>
+//   );
+// };
 
 const Lang = () => {
   const langClassName = useEmotionCss(({ token }) => {
@@ -85,20 +77,20 @@ const LoginMessage: React.FC<{
 
 const Login: React.FC = () => {
   const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
-  const [type, setType] = useState<string>('account');
+  // const [type, setType] = useState<string>('account');
   const { initialState, setInitialState } = useModel('@@initialState');
 
-  const containerClassName = useEmotionCss(() => {
-    return {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh',
-      overflow: 'auto',
-      backgroundImage:
-        "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
-      backgroundSize: '100% 100%',
-    };
-  });
+  // const containerClassName = useEmotionCss(() => {
+  //   return {
+  //     display: 'flex',
+  //     flexDirection: 'column',
+  //     height: '100vh',
+  //     overflow: 'auto',
+  //     backgroundImage:
+  //       "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
+  //     backgroundSize: '100% 100%',
+  //   };
+  // });
 
   const intl = useIntl();
 
@@ -117,17 +109,16 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.LoginParams) => {
     try {
       // 登录
-      const msg = await login({
+      const result = await login({
         //  ...values,
         company_name: 'slowstart', // 公司名称
-        name: 'admin', // 子账户名称
-        pwd: '123456', // 密码
-        ip: '1.1.1.1', // 通常情况下，前端不用提供该字段，后端会自动采用可见的接入ip；特别的，前端也可以给出这个ip，来显式地告诉后端应该保存哪个ip作为登录ip
+        name: values.name, // 子账户名称'admin'
+        pwd: values.pwd, // 密码'123456'
+        // ip: '1.1.1.1', // 通常情况下，前端不用提供该字段，后端会自动采用可见的接入ip；特别的，前端也可以给出这个ip，来显式地告诉后端应该保存哪个ip作为登录ip
         os: 'MacOS',
-        type,
       });
       // if (msg.status === 'ok') {
-      if (msg.msg === 'ok') {
+      if (result.msg === 'ok') {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
@@ -138,9 +129,9 @@ const Login: React.FC = () => {
         history.push(urlParams.get('redirect') || '/');
         return;
       }
-      console.log(msg);
+      console.log(result);
       // 如果失败去设置用户错误信息
-      setUserLoginState(msg);
+      setUserLoginState(result);
     } catch (error) {
       const defaultLoginFailureMessage = intl.formatMessage({
         id: 'pages.login.failure',
@@ -150,9 +141,9 @@ const Login: React.FC = () => {
       message.error(defaultLoginFailureMessage);
     }
   };
-  const { status, type: loginType } = userLoginState;
+  const { err_code } = userLoginState;
 
-  const mapText = () => {};
+  // const mapText = () => {};
 
   return (
     <ConfigProvider
@@ -205,7 +196,7 @@ const Login: React.FC = () => {
                   await handleSubmit(values as API.LoginParams);
                 }}
               >
-                <Tabs
+                {/* <Tabs
                   activeKey={type}
                   onChange={setType}
                   centered
@@ -225,69 +216,68 @@ const Login: React.FC = () => {
                       }),
                     },
                   ]}
-                />
+                /> */}
 
-                {status === 'error' && loginType === 'account' && (
+                {err_code === 2 && (
                   <LoginMessage
                     content={intl.formatMessage({
                       id: 'pages.login.accountLogin.errorMessage',
-                      defaultMessage: '账户或密码错误(admin/ant.design)',
+                      defaultMessage: '账户或密码错误',
                     })}
                   />
                 )}
-                {type === 'account' && (
-                  <>
-                    <ProFormText
-                      name="username"
-                      fieldProps={{
-                        size: 'large',
-                        prefix: <UserOutlined />,
-                      }}
-                      placeholder={intl.formatMessage({
-                        id: 'pages.login.username.placeholder',
-                        defaultMessage: '用户名: admin or user',
-                      })}
-                      rules={[
-                        {
-                          required: true,
-                          message: (
-                            <FormattedMessage
-                              id="pages.login.username.required"
-                              defaultMessage="请输入用户名!"
-                            />
-                          ),
-                        },
-                      ]}
-                    />
-                    <ProFormText.Password
-                      name="password"
-                      fieldProps={{
-                        size: 'large',
-                        prefix: <LockOutlined />,
-                      }}
-                      placeholder={intl.formatMessage({
-                        id: 'pages.login.password.placeholder',
-                        defaultMessage: '密码: ant.design',
-                      })}
-                      rules={[
-                        {
-                          required: true,
-                          message: (
-                            <FormattedMessage
-                              id="pages.login.password.required"
-                              defaultMessage="请输入密码！"
-                            />
-                          ),
-                        },
-                      ]}
-                    />
-                  </>
-                )}
 
-                {status === 'error' && loginType === 'mobile' && (
+                <>
+                  <ProFormText
+                    name="name"
+                    fieldProps={{
+                      size: 'large',
+                      prefix: <UserOutlined />,
+                    }}
+                    placeholder={intl.formatMessage({
+                      id: 'pages.login.username.placeholder',
+                      defaultMessage: '用户名',
+                    })}
+                    rules={[
+                      {
+                        required: true,
+                        message: (
+                          <FormattedMessage
+                            id="pages.login.username.required"
+                            defaultMessage="请输入用户名!"
+                          />
+                        ),
+                      },
+                    ]}
+                  />
+                  <ProFormText.Password
+                    name="pwd"
+                    fieldProps={{
+                      size: 'large',
+                      prefix: <LockOutlined />,
+                    }}
+                    placeholder={intl.formatMessage({
+                      id: 'pages.login.password.placeholder',
+                      defaultMessage: '密码',
+                    })}
+                    rules={[
+                      {
+                        required: true,
+                        message: (
+                          <FormattedMessage
+                            id="pages.login.password.required"
+                            defaultMessage="请输入密码！"
+                          />
+                        ),
+                      },
+                    ]}
+                  />
+                </>
+
+                {/* {status === 'error' && loginType === 'mobile' && (
                   <LoginMessage content="验证码错误" />
-                )}
-                {type === 'mobile' && (
+                )} */}
+                {/* {type === 'mobile' && (
                   <>
                     <ProFormText
                       fieldProps={{
@@ -367,7 +357,7 @@ const Login: React.FC = () => {
                       }}
                     />
                   </>
-                )}
+                )} */}
                 <div
                   style={{
                     marginBottom: 24,
